@@ -1,0 +1,45 @@
+# instagram clone ERD source code for quickdatabasediagrams.com
+
+users
+-
+id INT PK
+username VARCHAR(255) UNIQUE
+created_at TIMESTAMP
+
+photos
+-
+id INT PK
+image_url VARCHAR(255)
+user_id INT FK >- users.id
+created_at TIMESTAMP
+
+comments
+-
+id INT PK
+comment_text VARCHAR(255)
+user_id INT FK >- users.id
+photo_id INT FK >- photos.id
+created_at TIMESTAMP
+
+likes
+-
+user_id INT PK FK >- users.id
+photo_id INT PK FK >- photos.id
+created_at TIMESTAMP
+
+followers
+-
+follower_id INT PK FK >- users.id
+followee_id INT PK FK >- users.id
+created_at TIMESTAMP
+
+tags
+-
+id INT PK
+tag_name VARCHAR(255) UNIQUE
+created_at TIMESTAMP
+
+photo_tags
+-
+tag_id INT PK FK >- tags.id
+photo_id INT PK FK >- photos.id
