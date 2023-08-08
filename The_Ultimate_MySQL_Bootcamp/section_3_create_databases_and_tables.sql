@@ -7,32 +7,37 @@ CREATE DATABASE SlimeStore;
 DROP DATABASE slimestore;
 SHOW DATABASES;
 
-use pet_shop;
-select database();
+USE pet_shop;
+
+SELECT database();
 
 
 -- 25. Creating Tables ---------------------------
 CREATE TABLE cats (
     name VARCHAR(50),
-    age INT
+    age  INT
 );
 
-SELECT * FROM cats;
+SELECT *
+  FROM cats;
 
 CREATE TABLE dogs (
-    name VARCHAR(50),
+    name  VARCHAR(50),
     breed VARCHAR(50),
-    age INT
+    age   INT
 );
 
-SELECT * FROM dogs;
+SELECT *
+  FROM dogs;
 
 
 -- 27. How Do We Know It Worked? -----------------
 USE pet_shop;
 SHOW TABLES;
 
-SHOW COLUMNS FROM cats;
+SHOW COLUMNS
+FROM cats;
+
 DESC dogs;
 
 
@@ -42,7 +47,7 @@ SHOW TABLES;
 
 -- 31. Tables Basics Activity --------------------
 CREATE TABLE pastries (
-    name VARCHAR(50),
+    name     VARCHAR(50),
     quantity INT
 );
 
@@ -53,9 +58,3 @@ DESC pastries;
 DROP TABLE pastries;
 
 SHOW TABLES;
-
-
-
-
-
-

@@ -3,7 +3,9 @@ CREATE DATABASE book_shop;
 
 USE book_shop;
 
-SELECT * FROM books;
+SELECT *
+  FROM books;
+
 DESC books;
 
 
@@ -12,10 +14,10 @@ SELECT CONCAT('he', 'll', 'o');
 
 SELECT CONCAT(author_fname, ' ', author_lname) AS author_name
   FROM books;
-  
+
 SELECT CONCAT_WS('-', author_fname, author_lname) AS author_name
   FROM books;
-  
+
 
 -- 94. SUBSTRING ---------------------------------------
 SELECT SUBSTRING('Hello World', 1, 5);
@@ -35,7 +37,7 @@ USE book_shop;
 SELECT CONCAT(SUBSTRING(title, 1, 10), '...') AS abbrev_title
   FROM books;
 
--- author's initials  
+-- author's initials
 SELECT CONCAT(
            SUBSTRING(author_fname, 1, 1),
            '.',
@@ -48,11 +50,11 @@ SELECT CONCAT(
 -- 99. REPLACE -----------------------------------------
 SELECT REPLACE('Hello World', 'Hell', '%$#@') AS example;
 
-SELECT REPLACE('cheese bread coffee milk', ' ', ' and ') AS example; 
+SELECT REPLACE('cheese bread coffee milk', ' ', ' and ') AS example;
 
 SELECT REPLACE(title, ' ', '-')
   FROM books;
-  
+
 
 -- 101. REVERSE -----------------------------------------
 SELECT REVERSE('chicken nuggets');
@@ -75,10 +77,10 @@ SELECT CHAR_LENGTH(title) AS char_length,
 -- 105. UPPER & LOWER -----------------------------------
 SELECT UPPER(title)
   FROM books;
-  
+
 SELECT CONCAT('I LOVE ', UPPER(title), ' !!!')
   FROM books;
-  
+
 
 -- 107. Other String Functions ---------------------------
 SELECT INSERT('Hello Bobby', 6, 0, ' There');
@@ -108,18 +110,17 @@ SELECT author_lname AS forwards,
 SELECT UPPER(CONCAT(author_fname, ' ', author_lname)) AS 'full name in caps'
   FROM books;
 
-SELECT * from books; 
-  
+SELECT *
+  FROM books;
+
 SELECT CONCAT(title, ' was released in ', released_year) AS blurb
   FROM books;
 
 SELECT title,
        CHAR_LENGTH(title) AS 'character count'
   FROM books;
-  
+
 SELECT CONCAT(SUBSTRING(title, 1, 10), '...') AS 'short title',
        CONCAT(author_lname, ',', author_fname) AS author,
        CONCAT(stock_quantity, ' in stock') AS quantity
-  FROM books; 
-
-
+  FROM books;

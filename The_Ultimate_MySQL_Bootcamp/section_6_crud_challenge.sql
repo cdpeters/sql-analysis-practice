@@ -27,13 +27,15 @@ VALUES ('t-shirt', 'white', 'S', 10),
        ('tank top', 'white', 'S', 200),
        ('tank top', 'blue', 'M', 15);
 
-SELECT * FROM shirts;
+SELECT *
+  FROM shirts;
 
 -- Insert a purple polo shirt, size medium, last worn 50 days ago
 INSERT INTO shirts (article, color, shirt_size, last_worn)
 VALUES ('polo shirt', 'purple', 'M', 50);
 
-SELECT * FROM shirts;
+SELECT *
+  FROM shirts;
 
 -- Select all shirts and return article and color only
 SELECT article,
@@ -53,48 +55,47 @@ UPDATE shirts
    SET shirt_size = 'L'
  WHERE article = 'polo shirt';
 
-SELECT * FROM shirts;
+SELECT *
+  FROM shirts;
 
 -- Update the shirt last worn 15 days ago to worn 0 days ago
 UPDATE shirts
    SET last_worn = 0
  WHERE last_worn = 15;
- 
-SELECT * FROM shirts;
- 
+
+SELECT *
+  FROM shirts;
+
 -- Update all white shirts to size 'XS' and color 'off white'
 UPDATE shirts
    SET shirt_size = 'XS',
        color = 'off white'
  WHERE color = 'white';
-  
-SELECT * FROM shirts;
-  
+
+SELECT *
+  FROM shirts;
+
 -- Delete all old shirts (last worn 200 days ago)
 DELETE FROM shirts
  WHERE last_worn = 200;
 
-SELECT * FROM shirts;
+SELECT *
+  FROM shirts;
 
 -- Delete all tank tops
 DELETE FROM shirts
  WHERE article = 'tank top';
 
-SELECT * FROM shirts;
+SELECT *
+  FROM shirts;
 
 -- Delete all shirts
 DELETE FROM shirts;
 
-SELECT * FROM shirts;
+SELECT *
+  FROM shirts;
 
 -- Delete the shirts table
 DROP TABLE shirts;
 
 SHOW TABLES;
-
-
-
-
-
-
-
