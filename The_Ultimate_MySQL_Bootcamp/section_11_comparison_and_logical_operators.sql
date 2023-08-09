@@ -5,7 +5,7 @@ SELECT title,
        author_lname
   FROM books
  WHERE author_lname != 'Gaiman';
- 
+
 
 -- 178. NOT LIKE -----------------------------------------------
 SELECT title
@@ -53,8 +53,8 @@ SELECT title,
        released_year
   FROM books
  WHERE released_year >= 2010;
- 
- SELECT title,
+
+SELECT title,
        released_year
   FROM books
  WHERE released_year <= 2010;
@@ -63,12 +63,12 @@ SELECT title,
 -- 184. Logical AND --------------------------------------------
 SELECT *
   FROM books
- WHERE author_lname = 'Eggers' 
+ WHERE author_lname = 'Eggers'
        AND released_year > 2010;
 
 SELECT *
   FROM books
- WHERE author_lname = 'Eggers' 
+ WHERE author_lname = 'Eggers'
        AND released_year > 2010
        AND title LIKE '%novel%';
 
@@ -77,14 +77,14 @@ SELECT title,
   FROM books
  WHERE CHAR_LENGTH(title) > 30
        AND pages > 500;
-       
+
 
 -- 186. Logical OR ---------------------------------------------
 SELECT title,
        author_lname,
        released_year
   FROM books
- WHERE author_lname = 'Eggers' 
+ WHERE author_lname = 'Eggers'
        OR released_year > 2010;
 
 SELECT title,
@@ -112,7 +112,7 @@ SELECT title,
        pages
   FROM books
  WHERE pages NOT BETWEEN 200 AND 300;
-       
+
 
 -- 190. Comparing Dates ----------------------------------------
 SELECT *
@@ -128,12 +128,12 @@ SELECT *
 SELECT *
   FROM people
  WHERE birthdate < CAST('2005-01-01' AS DATE);
- 
+
  -- not so great
- SELECT *
-   FROM people
-  WHERE birthtime BETWEEN '4:00:00'
-        AND '10:00:00';
+SELECT *
+  FROM people
+ WHERE birthtime BETWEEN '4:00:00'
+       AND '10:00:00';
 
 -- better
 SELECT *
@@ -152,7 +152,7 @@ SELECT *
 USE book_shop;
 
 SELECT title,
-       author_lname 
+       author_lname
   FROM books
  WHERE author_lname = 'Carver'
        OR author_lname = 'Lahiri'
@@ -160,15 +160,15 @@ SELECT title,
 
 -- a better way
 SELECT title,
-       author_lname 
+       author_lname
   FROM books
  WHERE author_lname IN ('Carver', 'Lahiri', 'Smith');
 
 SELECT title,
-       author_lname 
+       author_lname
   FROM books
  WHERE author_lname NOT IN ('Carver', 'Lahiri', 'Smith');
- 
+
 SELECT title,
        released_year
   FROM books
@@ -191,7 +191,7 @@ SELECT title,
   FROM books
  WHERE released_year >= 2000
        AND released_year % 2 != 0;
-       
+
 
 -- 194. CASE ---------------------------------------------------
 SELECT title,
@@ -200,7 +200,7 @@ SELECT title,
        WHEN released_year >= 2000 THEN 'modern lit'
        ELSE '20th century lit'
        END AS genre
-  FROM books;       
+  FROM books;
 
 SELECT title,
        stock_quantity,
@@ -225,7 +225,7 @@ SELECT title,
        END AS stock_rating
   FROM books;
 
-       
+
 -- 196. IS NULL ------------------------------------------------
 SELECT *
   FROM books
@@ -245,7 +245,7 @@ SELECT 1 IN (5,3) OR 9 BETWEEN 8 AND 10;
 SELECT *
   FROM books
  WHERE released_year < 1980;
- 
+
 SELECT *
   FROM books
  WHERE author_lname IN ('Eggers', 'Chabon');

@@ -86,7 +86,8 @@ CREATE TABLE palindromes (
 
 -- 206. Multiple Column Constraints ---------------------------------
 CREATE TABLE companies (
-    supplier_id INT          PRIMARY KEY AUTO_INCREMENT,
+    PRIMARY KEY (supplier_id),
+    supplier_id INT          AUTO_INCREMENT,
     name        VARCHAR(255) NOT NULL,
     phone       VARCHAR(15)  NOT NULL UNIQUE,
     address     VARCHAR(255) NOT NULL,
@@ -100,7 +101,7 @@ INSERT INTO companies (name, phone, address)
 VALUES ('blackbird auto', '8781213455', '7777 long st');
 
 INSERT INTO companies (name, phone, address)
-VALUES ('luigi\'s pies', '8784551213', '7777 long st');
+VALUES ('luigis pies', '8784551213', '7777 long st');
 
 SELECT *
   FROM companies;
@@ -132,7 +133,7 @@ ALTER TABLE companies
 
 SELECT *
   FROM companies;
-  
+
 ALTER TABLE companies
   ADD COLUMN employee_count INT NOT NULL;
 
@@ -141,7 +142,7 @@ SELECT *
 
 ALTER TABLE companies
   ADD COLUMN salary FLOAT NOT NULL DEFAULT 0.0;
-  
+
 SELECT *
   FROM companies;
 
@@ -156,7 +157,7 @@ ALTER TABLE companies
  DROP COLUMN employee_count;
 
 DESC companies;
- 
+
 
 -- 212. ALTER TABLE: Renaming ---------------------------------
 -- rename a table
@@ -198,7 +199,7 @@ DESC companies;
 DESC houses;
 
 ALTER TABLE houses
-  ADD CONSTRAINT positive_price 
+  ADD CONSTRAINT positive_price
       CHECK (purchase_price >= 0);
 
 DESC houses;
@@ -213,4 +214,3 @@ ALTER TABLE houses
 -- this will now not fail
 INSERT INTO houses (purchase_price, sale_price)
 VALUES (-1, 4);
-

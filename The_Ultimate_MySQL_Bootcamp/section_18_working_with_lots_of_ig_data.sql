@@ -72,6 +72,7 @@ SELECT users.username,
  ORDER BY like_count DESC
  LIMIT 1;
  
+ 
  -- username Zack_Kemmer93 has the most liked photo at 48 likes
 
 

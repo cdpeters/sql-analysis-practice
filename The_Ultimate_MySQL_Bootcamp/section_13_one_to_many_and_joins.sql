@@ -11,7 +11,7 @@ CREATE TABLE customers (
 );
 
 CREATE TABLE orders (
-    PRIMARY KEY (id), 
+    PRIMARY KEY (id),
     id          INT AUTO_INCREMENT,
     order_date  DATE,
     amount      DECIMAL(8, 2),
@@ -31,7 +31,7 @@ VALUES ('Boy', 'George', 'george@gmail.com'),
        ('David', 'Bowie', 'david@gmail.com'),
        ('Blue', 'Steele', 'blue@gmail.com'),
        ('Bette', 'Davis', 'bette@aol.com');
-       
+
 INSERT INTO orders (order_date, amount, customer_id)
 VALUES ('2016-02-10', 99.99, 1),
        ('2017-11-11', 35.50, 1),
@@ -44,7 +44,7 @@ SELECT *
 
 SELECT *
   FROM orders;
-  
+
 DESC orders;
 
 -- this will fail because the id 54 doesn't exist in the customers table
@@ -53,24 +53,25 @@ VALUES ('2022-11-11', 85.99, 54);
 
 
 -- 224. Cross Joins ----------------------------------------------
--- naive approach
+-- naive approach (find the customer id using the first query)
 SELECT id
   FROM customers
  WHERE last_name = 'George';
 
+-- hard code in the customer id in the next query
 SELECT *
   FROM orders
  WHERE customer_id = 1;
- 
+
 -- a better approach
 SELECT *
   FROM orders
- WHERE customer_id = 
+ WHERE customer_id =
        (SELECT id
           FROM customers
          WHERE last_name = 'George');
- 
--- a cross join (cartesain product of all rows from both tables
+
+-- a cross join (cartesian product of all rows from both tables)
 SELECT * FROM customers, orders;
 
 
@@ -121,7 +122,7 @@ SELECT customers.first_name,
 -- 236. On Delete Cascade ----------------------------------------
 DELETE FROM customers
  WHERE last_name = 'George';
- 
+
 SELECT *
   FROM orders;
 
@@ -146,8 +147,8 @@ VALUES ('Caleb'),
        ('Raj'),
        ('Carlos'),
        ('Lisa');
- 
-INSERT INTO papers (student_id, title, grade) 
+
+INSERT INTO papers (student_id, title, grade)
 VALUES (1, 'My First Book Report', 60),
        (1, 'My Second Book Report', 75),
        (2, 'Russian Lit Through The Ages', 94),
@@ -164,7 +165,7 @@ SELECT students.first_name,
        papers.title,
        papers.grade
   FROM students
- INNER JOIN papers
+       INNER JOIN papers
        ON papers.student_id = students.id
  ORDER BY papers.grade DESC;
 
@@ -172,20 +173,20 @@ SELECT students.first_name,
        papers.title,
        papers.grade
   FROM students
- LEFT JOIN papers
+       LEFT JOIN papers
        ON papers.student_id = students.id;
 
 SELECT students.first_name,
        IFNULL(papers.title, 'MISSING') AS title,
        IFNULL(papers.grade, 0) AS grade
   FROM students
-  LEFT JOIN papers
+       LEFT JOIN papers
        ON papers.student_id = students.id;
 
 SELECT students.first_name,
        IFNULL(AVG(papers.grade), 0) AS average
   FROM students
-  LEFT JOIN papers
+       LEFT JOIN papers
        ON papers.student_id = students.id
  GROUP BY students.first_name
  ORDER BY average DESC;
@@ -197,8 +198,7 @@ SELECT students.first_name,
        ELSE 'FAILING'
        END AS passing_status
   FROM students
-  LEFT JOIN papers
+       LEFT JOIN papers
        ON papers.student_id = students.id
  GROUP BY students.first_name
  ORDER BY average DESC;
-
